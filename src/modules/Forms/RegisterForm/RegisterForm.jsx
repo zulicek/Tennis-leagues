@@ -28,6 +28,9 @@ export function RegisterForm() {
       registerRequest({
         username: username,
         password: password,
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender
       })
         .then((response) => {
           if (response.error) {
@@ -53,7 +56,7 @@ export function RegisterForm() {
         password,
         firstName,
         lastName,
-        birthday,
+       /*  birthday, */
         gender
       )
     );
@@ -111,13 +114,13 @@ export function RegisterForm() {
           </div>
         </div>
 
-        <div className="label-inline ">
+        {/* <div className="label-inline ">
           <i className="fa fa-birthday-cake" aria-hidden="true"></i>
           <label>Birthday</label>
           <Input type="date" onChange={handleBirthdayChange} />
           
           {errors.birthday && <div className="error">{errors.birthday}</div>}
-        </div>
+        </div> */}
 
         <div className="label-inline radios">
           <i className="fa fa-venus-mars" aria-hidden="true"></i>

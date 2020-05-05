@@ -5,8 +5,12 @@ import { Logo } from "../Logo/Logo";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actionCreators/sessionActionCreators";
+import { useSelector } from "react-redux";
 
 export function MainNav() {
+  const { username, firstName, lastName } = useSelector(
+    (state) => state.userData
+  );
   const [isOpen, toggleOpen] = useBoolean();
   const dispatch = useDispatch();
 
@@ -20,8 +24,10 @@ export function MainNav() {
         <NavLink to="/profile">
           <Logo />
         </NavLink>
-        <div className="name username">ivanhorvat</div>
-        <div className="name">Ivan Horvat</div>
+        <div className="name username">{username}</div>
+        <div className="name">
+          {firstName} {lastName}
+        </div>
         <nav role="navigation">
           <ul>
             <li>
@@ -43,8 +49,8 @@ export function MainNav() {
               </NavLink>
             </li>
             <li className="logout" onClick={onLogout}>
-                <i className="fa fa-sign-out" aria-hidden="true"></i>
-                <span>Log out</span>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
+              <span>Log out</span>
             </li>
           </ul>
         </nav>

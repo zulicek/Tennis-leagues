@@ -7,10 +7,11 @@ import { RegisterForm } from "./modules/Forms/RegisterForm/RegisterForm";
 import { UserProfile } from "./modules/UserProfile/UserProfile";
 import { Events } from "./modules/Events/Events";
 import { MainNav } from "./components/MainNav/MainNav";
-import { useSelector, connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { logout } from "./actionCreators/sessionActionCreators";
+import { setCurrentUserData } from "./actionCreators/userActionCreators";
 import { useDispatch } from "react-redux";
-import { checkTokenRequest } from "./api/repository";
+import { checkTokenRequest, currentUserRequest } from "./api/repository";
 
 export function App() {
   const dispatch = useDispatch();
@@ -23,10 +24,25 @@ export function App() {
       .then((response) => {
         if (response.error) {
           dispatch(logout());
-        } 
+        } else {
+          currentUser()
+        }
       })
-      .catch(() => {
+      .catch(() => {  
         dispatch(logout());
+      });
+  }
+
+  const currentUser = () => {
+    currentUserRequest(token, user.id)
+      .then((response) => {
+        if (response.error) {       
+        } else {
+          dispatch(setCurrentUserData(response));   
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
@@ -37,6 +53,7 @@ export function App() {
   useEffect(() => {
     if (keepLoggedIn) {
       checkToken();
+      currentUser()
     } else {
       dispatch(logout());
     }

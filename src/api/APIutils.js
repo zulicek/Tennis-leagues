@@ -2,7 +2,7 @@ const API_BASE_URL = "https://private-leagues-api.herokuapp.com";
 
 const request = options => {
   const opt = {...options}
-  opt.headers = { "Content-Type": "application/json" };
+  opt.headers = { "Content-Type": "application/json", "Authorization" : options.auth };
 
   return fetch(options.url, opt)
     .then(response => {
@@ -19,5 +19,13 @@ export function postJson( url, postRequest) {
     url: API_BASE_URL + url,
     method: "POST",
     body: JSON.stringify(postRequest)
+  })
+}
+
+export function getJson( url, token ) {
+  return request({
+    url: API_BASE_URL + url,
+    method: "GET",
+    auth: 'Bearer ' + token
   })
 }

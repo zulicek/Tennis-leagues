@@ -1,0 +1,23 @@
+.user-profile {
+    display: flex;
+}
+
+.user-data-wrapper {
+    margin-left: 64px;
+    .data-group {
+        margin-bottom: 16px;
+    }
+}
+
+.user-image-wrapper {
+    width: 480px;
+    height: 480px;
+    border: 1px solid black;
+
+    > img {
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+        height: 100%;
+    }
+}

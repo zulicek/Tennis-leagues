@@ -3,10 +3,11 @@
 
 .app-main {
     margin-left: 56px;
-    padding: 30px;
+    padding: 30px 15%;
 
     h1 {
         text-align: right;
+        margin-bottom: 64px;
     }
 
     @media (min-width: 991px) {
