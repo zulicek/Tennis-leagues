@@ -1,0 +1,166 @@
+@import "./../../variables.scss";
+
+.input-wrapper {
+  flex: 1;
+  position: relative;
+  margin: 16px 0 8px;
+  display: flex;
+  align-items: center;
+  height: 62px;
+  input {
+    font-size: 16px;
+    color: $white;
+    line-height: 1.2;
+    width: 100%;
+    box-sizing: border-box;
+    height: 62px;
+    background: transparent;
+    padding: 16px 8px 0 32px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    transition: border 1s ease-in-out;
+    -webkit-text-fill-color: $white;
+    -webkit-box-shadow: 0 transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus {
+      background: transparent;
+    }
+    &::placeholder {
+      color: $white;
+      opacity: 1;
+      font-family: $font-family-text;
+    }
+    &:focus {
+      border-color: rgba(255, 255, 255, 1);
+      &::placeholder {
+        position: absolute;
+        transform: translateY(-30px);
+        font-size: 14px;
+        transition: all 0.4s;
+        z-index: 1;
+      }
+    }
+    & ~ label {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 32px;
+      font-size: 14px;
+      color: $white;
+    }
+    &:not(:placeholder-shown) ~ label {
+      display: block;
+    }
+
+    &[type="radio"] {
+      position: absolute;
+      visibility: hidden;
+      & ~ label {
+        position: relative;
+        font-size: 16px;
+        left: 0;
+        padding: 0 0 16px 32px;
+        align-self: flex-end;
+        cursor: pointer;
+        &::before {
+          content: "";
+          position: absolute;
+          border: 2px solid $white;
+          border-radius: 100%;
+          height: 16px;
+          width: 16px;
+          left: 0;
+          top: 0;
+        }
+      }
+      &:checked ~ label {
+        &::after {
+          content: "";
+          position: absolute;
+          background: $white;
+          border-radius: 100%;
+          height: 12px;
+          width: 12px;
+          left: 4px;
+          top: 4px;
+        }
+      }
+    }
+
+    &[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      & + label {
+        display: block;
+        position: relative;
+        padding-left: 32px;
+        font-size: 16px;
+        margin-top: 48px;
+        cursor: pointer;
+        width: 100%;
+        left: 0;
+        &:before {
+          display: block;
+          content: "";
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
+          height: 16px;
+          width: 16px;
+          background-color: $primary-color;
+        }
+        &::after {
+          display: none;
+          content: "";
+          position: absolute;
+          left: 5px;
+          top: 3px;
+          width: 3px;
+          height: 8px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          transform: rotate(45deg);
+        }
+      }
+      &:checked + label:after {
+        display: block;
+      }
+    }
+  }
+  
+  .show-password {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: $white;
+    padding: 16px 0 16px 16px;
+    cursor: pointer;
+    i {
+      left: unset;
+      right: 0;
+    }
+    .tooltip {
+      position: absolute;
+      z-index: 1;
+      top: -24px;
+      left: -61px;
+      width: 95px;
+      font-size: 12px;
+      background: rgba(255,255,255,.5);
+      color: #000;
+      padding: 2px;
+      border-radius: 4px;
+      visibility: hidden;
+    }
+    &:hover {
+      .tooltip {
+        visibility: visible;
+      }
+    }
+  }
+}
