@@ -5,7 +5,7 @@ export const validateRegister = (
   password,
   firstName,
   lastName,
-/*   birthday, */
+  age,
   gender
 ) => {
 
@@ -19,9 +19,9 @@ export const validateRegister = (
     errors.lastName = "Last name can't be empty";
   }
 
-  /* if (!birthday) {
-    errors.birthday = "Birthday can't be empty";
-  } */
+  if (age && age < 0) {
+    errors.birthday = "Age has to be greater than 0";
+  }
 
   if (!gender) {
     errors.gender = "Gender can't be empty";

@@ -16,7 +16,7 @@ export function RegisterForm() {
   const [password, handlePasswordChange] = useInputChange("");
   const [firstName, handleFirstNameChange] = useInputChange("");
   const [lastName, handleLastNameChange] = useInputChange("");
-  const [birthday, handleBirthdayChange] = useInputChange("");
+  const [age, handleAgeChange] = useInputChange("");
   const [gender, handleGenderChange] = useInputChange("");
   const [errors, setErrors] = useState({});
   const [userId, setUserId] = useState();
@@ -30,6 +30,7 @@ export function RegisterForm() {
         password: password,
         firstName: firstName,
         lastName: lastName,
+        age: age,
         gender: gender
       })
         .then((response) => {
@@ -56,7 +57,7 @@ export function RegisterForm() {
         password,
         firstName,
         lastName,
-       /*  birthday, */
+        age,
         gender
       )
     );
@@ -114,13 +115,13 @@ export function RegisterForm() {
           </div>
         </div>
 
-        {/* <div className="label-inline ">
+        <div className="label-inline ">
           <i className="fa fa-birthday-cake" aria-hidden="true"></i>
-          <label>Birthday</label>
-          <Input type="date" onChange={handleBirthdayChange} />
+          <label>Age</label>
+          <Input type="number" onChange={handleAgeChange} />
           
-          {errors.birthday && <div className="error">{errors.birthday}</div>}
-        </div> */}
+          {errors.age && <div className="error">{errors.age}</div>}
+        </div>
 
         <div className="label-inline radios">
           <i className="fa fa-venus-mars" aria-hidden="true"></i>
