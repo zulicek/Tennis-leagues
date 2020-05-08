@@ -21,7 +21,8 @@ body {
   font-weight: 500;
 }
 p {
-  margin-top: 0;
+  margin: 0;
+  line-height: 24px;
 }
 
 .btn {
@@ -39,8 +40,12 @@ p {
   cursor: pointer;
   font-family: $font-family-text;
   border: 0;
+  transition: all .4s ease-in-out;
   &:focus {
     outline: none;
+  }
+  &:hover {
+    transform: scale(1.15);
   }
 }
 
@@ -48,8 +53,7 @@ p {
   color: $white;
   background-color: $primary-color;
   &:hover, &:focus, &:active {
-    color: $white;
-    background-color: $secondary-color;
+    transform: scale(1.15);
   }
 }
 
@@ -57,8 +61,4 @@ p {
   color: $text-color;
   background: $white;
   border: 1px solid $primary-color;
-  transition: all .4s ease-in-out;
-  &:hover {
-    transform: scale(1.15);
-  }
 }

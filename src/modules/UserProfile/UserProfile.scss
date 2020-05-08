@@ -3,7 +3,7 @@
 .user-profile {
   display: flex;
   margin: 108px auto 0;
-  max-width: 900px;
+  max-width: 880px;
 
   .actions {
     position: absolute;
@@ -66,7 +66,7 @@
   .user-image-wrapper {
     background: $white;
     position: absolute;
-    top: -44px;
+    top: -55px;
     left: 16px;
     width: 360px;
     height: 360px;
@@ -94,3 +94,47 @@
       }
   }
 }
+
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+
+  .modal-header {
+    padding: 24px;
+    border-bottom: 1px solid $lightgray;
+    padding-right: 64px;
+  }
+
+  .modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid $lightgray;
+  }
+
+  .close {
+    font-size: 16px;
+    font-weight: bold;
+    color: $gray;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    position: absolute;
+    right: 12px;
+    top: 24px;
+    cursor: pointer;
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  &.delete-account {
+    max-width: 360px;
+  }
+
+  &.edit-account {
+    max-width: 500px;
+  }
+}  

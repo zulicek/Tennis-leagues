@@ -29,3 +29,11 @@ export function getJson( url, token ) {
     auth: 'Bearer ' + token
   })
 }
+
+export function deleteRequest( url, token ) {
+  return request({
+    url: API_BASE_URL + url,
+    method: "DEL",
+    auth: 'Bearer ' + token
+  })
+}

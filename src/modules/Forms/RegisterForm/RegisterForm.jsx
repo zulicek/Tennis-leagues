@@ -104,7 +104,6 @@ export function RegisterForm() {
           </div>
 
           <div className="col">
-            {" "}
             <Input
               name="Last name"
               icon="fa fa-user"
