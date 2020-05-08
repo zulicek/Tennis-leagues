@@ -33,7 +33,7 @@ export function getJson( url, token ) {
 export function deleteRequest( url, token ) {
   return request({
     url: API_BASE_URL + url,
-    method: "DEL",
+    method: "DELETE",
     auth: 'Bearer ' + token
   })
 }
