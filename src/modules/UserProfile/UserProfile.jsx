@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./UserProfile.scss";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
 import { Modal } from "../../components/Modal/Modal";
-import { deleteUserRequest } from "../../api/repository";
+import { deleteUserRequest, editUserRequest } from "../../api/repository";
 import { logout } from "../../actionCreators/sessionActionCreators";
 import { EditUserProfile } from "./EditUserProfile";
 
@@ -29,9 +29,24 @@ export function UserProfile() {
       });
   };
 
-  const saveChanges = () => {
-    alert("save!")
-  }
+  const saveChanges = (username, firstName, lastName, age, gender) => {
+    editUserRequest(token, {
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      age: age,
+      gender: gender,
+    })
+      .then((response) => {
+        if (response.error) {
+        } else {
+          toggleEditAccountOpen()
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -97,12 +112,20 @@ export function UserProfile() {
           <Modal>
             <div className="modal-content edit-account">
               <div className="modal-header">
+                <p>Edit your profile</p>
                 <button className="close" onClick={toggleEditAccountOpen}>
                   X
                 </button>
               </div>
               <div className="modal-content">
-                <EditUserProfile saveChanges={saveChanges}/>
+                <EditUserProfile
+                  saveChanges={saveChanges}
+                  username={username}
+                  firstName={firstName}
+                  lastName={lastName}
+                  age={age}
+                  gender={gender}
+                />
               </div>
             </div>
           </Modal>

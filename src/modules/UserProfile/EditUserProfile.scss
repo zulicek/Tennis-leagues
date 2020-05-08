@@ -1,0 +1,50 @@
+@import "./../../variables.scss";
+
+.edit-account {
+  .form-wrapper {
+    min-height: auto;
+    form {
+      background: transparent;
+      padding: 0 24px 24px;
+      i {
+        color: $darkgray;
+      }
+    }
+  }
+
+  .input-wrapper {
+    input {
+      color: $darkgray;
+      border-bottom: 1px solid $gray;
+      -webkit-text-fill-color: $darkgray;
+      &::placeholder {
+        color: $darkgray;
+      }
+      &:focus {
+        border-color: $darkgray;
+      }
+      & ~ label {
+        color: $darkgray;
+      }
+
+      &[type="radio"] {
+        & ~ label {
+          &::before {
+            border: 2px solid $darkgray;
+          }
+        }
+        &:checked ~ label {
+          &::after {
+            background: $darkgray;
+          }
+        }
+      }
+    }
+  }
+
+  .label-inline {
+    > label {
+      color: $black;
+    }
+  }
+}

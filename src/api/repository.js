@@ -1,4 +1,4 @@
-import { postJson, getJson, deleteRequest } from './APIutils';
+import { postJson, getJson, deleteRequest, patchRequest } from './APIutils';
 
 export function loginRequest(loginRequest) {
     return postJson("/api/login", loginRequest);
@@ -14,6 +14,10 @@ export function checkTokenRequest(checkTokenRequest) {
 
 export function currentUserRequest(token) {
     return getJson("/api/users/me", token);
+}
+
+export function editUserRequest(token, newData) {
+    return patchRequest("/api/users/me", token, newData);
 }
 
 export function deleteUserRequest(token) {

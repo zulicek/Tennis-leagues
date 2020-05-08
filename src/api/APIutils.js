@@ -37,3 +37,13 @@ export function deleteRequest( url, token ) {
     auth: 'Bearer ' + token
   })
 }
+
+export function patchRequest( url, token, newData ) {
+  return request({
+    url: API_BASE_URL + url,
+    method: "PATCH",
+    auth: 'Bearer ' + token,
+    body: JSON.stringify(newData)
+  })
+}
+
