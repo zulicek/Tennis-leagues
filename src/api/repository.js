@@ -17,8 +17,8 @@ export function currentUserRequest(token) {
 }
 
 export function editUserRequest(token, newData) {
-    return patchRequest("/api/users/me", token, newData);
-}
+   return patchRequest("/api/users/me", token, newData);
+} 
 
 export function deleteUserRequest(token) {
     return deleteRequest("/api/users/me", token);

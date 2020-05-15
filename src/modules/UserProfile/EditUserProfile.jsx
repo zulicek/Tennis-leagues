@@ -11,12 +11,11 @@ import { isObjectEmpty } from "./../../utils/helpers.js";
 export const EditUserProfile = ({ saveChanges, username, firstName, lastName, age, gender }) => {
   const [newUsername, handleUsernameChange] = useInputChange(username);
   const [password, handlePasswordChange] = useInputChange("");
-  const [newFirstName, handleFirstNameChange] = useInputChange(lastName);
+  const [newFirstName, handleFirstNameChange] = useInputChange(firstName);
   const [newLastName, handleLastNameChange] = useInputChange(lastName);
   const [newAge, handleAgeChange] = useInputChange(age);
   const [newGender, handleGenderChange] = useInputChange(gender);
   const [errors, setErrors] = useState({});
-  const [show, toggleShow] = useBoolean(false);
 
   return (
     <div className="form-wrapper">

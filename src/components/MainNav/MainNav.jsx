@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 export function MainNav() {
   const { username, firstName, lastName } = useSelector(
-    (state) => state.userData
+    (state) => state.session.user
   );
   const [isOpen, toggleOpen] = useBoolean();
   const dispatch = useDispatch();

@@ -9,7 +9,7 @@ export function Input({ name, icon, type, onChange, iconDecoration, value, check
         type={type}
         name={name}
         placeholder={name}
-        value={value}
+        defaultValue={value}
         checked={checked}
         onChange={(event) => {
           onChange(event.currentTarget.value);

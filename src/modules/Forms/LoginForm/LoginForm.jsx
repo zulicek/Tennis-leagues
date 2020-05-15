@@ -23,7 +23,6 @@ export const LoginForm = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useBoolean(false);
 
-
   const onLogin = (e) => {
     e.preventDefault();
     const errs = validateCredentials(username, password)

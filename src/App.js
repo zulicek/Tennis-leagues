@@ -24,25 +24,10 @@ export function App() {
       .then((response) => {
         if (response.error) {
           dispatch(logout());
-        } else {
-          currentUser()
         }
       })
       .catch(() => {  
         dispatch(logout());
-      });
-  }
-
-  const currentUser = () => {
-    currentUserRequest(token, user.id)
-      .then((response) => {
-        if (response.error) {       
-        } else {
-          dispatch(setCurrentUserData(response));   
-        }
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
 
@@ -53,7 +38,6 @@ export function App() {
   useEffect(() => {
     if (keepLoggedIn) {
       checkToken();
-      currentUser()
     } else {
       dispatch(logout());
     }

@@ -4,12 +4,12 @@ import "./UserProfile.scss";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
 import { Modal } from "../../components/Modal/Modal";
 import { deleteUserRequest, editUserRequest } from "../../api/repository";
-import { logout } from "../../actionCreators/sessionActionCreators";
+import { logout, setUserData } from "../../actionCreators/sessionActionCreators";
 import { EditUserProfile } from "./EditUserProfile";
 
 export function UserProfile() {
   const { username, firstName, lastName, age, gender } = useSelector(
-    (state) => state.userData
+    (state) => state.session.user
   );
   const token = useSelector((state) => state.session.token);
   const [isDeleteAccountOpen, toggleDeleteAccountOpen] = useBoolean();
@@ -30,6 +30,7 @@ export function UserProfile() {
   };
 
   const saveChanges = (username, firstName, lastName, age, gender) => {
+    dispatch(setUserData(username, firstName, lastName, age, gender))
     editUserRequest(token, {
       username: username,
       firstName: firstName,
@@ -38,7 +39,9 @@ export function UserProfile() {
       gender: gender,
     })
       .then((response) => {
+        console.log(response)
         if (response.error) {
+          console.log(response.error)
         } else {
           toggleEditAccountOpen()
         }
