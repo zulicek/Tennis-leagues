@@ -7,26 +7,38 @@ import { useInputChange } from "../../utils/customHooks/UseInputChange";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
 import { validateRegister } from "./../../utils/validations/validateRegister.js";
 import { isObjectEmpty } from "./../../utils/helpers.js";
+import { useCallback } from "react";
 
-export const EditUserProfile = ({ saveChanges, username, firstName, lastName, age, gender }) => {
-  const [newUsername, handleUsernameChange] = useInputChange(username);
-  const [password, handlePasswordChange] = useInputChange("");
-  const [newFirstName, handleFirstNameChange] = useInputChange(firstName);
-  const [newLastName, handleLastNameChange] = useInputChange(lastName);
-  const [newAge, handleAgeChange] = useInputChange(age);
-  const [newGender, handleGenderChange] = useInputChange(gender);
+export const EditUserProfile = ({
+  saveChanges,
+  username,
+  firstName,
+  lastName,
+  age,
+  gender,
+}) => {
   const [errors, setErrors] = useState({});
+
+  const [user, setUser] = useState({})
+
+  const handleChange = useCallback(field => (newValue)=> 
+    setUser(prev => ({...prev, [field]: newValue}))
+  )
 
   return (
     <div className="form-wrapper">
-      <form onSubmit={() => saveChanges(newUsername || username, newFirstName || firstName, newLastName || lastName,
-        newAge || age, newGender || gender)}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          saveChanges(user);
+        }}
+      >
         <Input
           name="Username"
           icon="fa fa-user-circle"
           type="text"
           value={username}
-          onChange={handleUsernameChange}
+          onChange={handleChange('username')}
         />
         {errors.username && <div className="error">{errors.username}</div>}
 
@@ -37,7 +49,7 @@ export const EditUserProfile = ({ saveChanges, username, firstName, lastName, ag
               icon="fa fa-user"
               type="text"
               value={firstName}
-              onChange={handleFirstNameChange}
+              onChange={handleChange('firstName')}
             />
             {errors.firstName && (
               <div className="error">{errors.firstName}</div>
@@ -50,7 +62,7 @@ export const EditUserProfile = ({ saveChanges, username, firstName, lastName, ag
               icon="fa fa-user"
               type="text"
               value={lastName}
-              onChange={handleLastNameChange}
+              onChange={handleChange('lastName')}
             />
             {errors.lastName && <div className="error">{errors.lastName}</div>}
           </div>
@@ -59,7 +71,7 @@ export const EditUserProfile = ({ saveChanges, username, firstName, lastName, ag
         <div className="label-inline ">
           <i className="fa fa-birthday-cake" aria-hidden="true"></i>
           <label>Age</label>
-          <Input type="number" onChange={handleAgeChange} value={age} />
+          <Input type="number" onChange={handleChange('age')} value={age} />
 
           {errors.age && <div className="error">{errors.age}</div>}
         </div>
@@ -71,14 +83,14 @@ export const EditUserProfile = ({ saveChanges, username, firstName, lastName, ag
             name="Male"
             type="radio"
             value="Male"
-            onChange={handleGenderChange}
+            onChange={handleChange('gender')}
             checked={gender === "Male"}
           />
           <Input
             name="Female"
             type="radio"
             value="Female"
-            onChange={handleGenderChange}
+            onChange={handleChange('gender')}
             checked={gender === "Female"}
           />
         </div>

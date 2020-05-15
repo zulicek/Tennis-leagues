@@ -10,13 +10,9 @@ export const logout = () => ({
   type: 'LOGOUT'
 });
 
-export const setUserData = (username, firstName, lastName, age, gender) => {
+export const setUserData = (user) => {
   return ({
     type: 'SET_USER_DATA',
-    username: username,
-    firstName: firstName,
-    lastName: lastName,
-    age: age,
-    gender: gender
+    user: user
 })};
 

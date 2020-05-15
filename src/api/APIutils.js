@@ -3,8 +3,6 @@ const API_BASE_URL = "https://private-leagues-api.herokuapp.com";
 const request = options => {
   const opt = {...options}
   opt.headers = { "Content-Type": "application/json", "Authorization" : options.auth };
-  console.log(options.url, opt, opt.headers)
-  alert("baa")
   return fetch(options.url, opt)
     .then(response => {
       if (response.status === 204) return true;
@@ -12,7 +10,6 @@ const request = options => {
     })
     .catch(error => {
       console.log(error);
-      alert(error)
     });
 };
 

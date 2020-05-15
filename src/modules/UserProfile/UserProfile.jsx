@@ -8,9 +8,10 @@ import { logout, setUserData } from "../../actionCreators/sessionActionCreators"
 import { EditUserProfile } from "./EditUserProfile";
 
 export function UserProfile() {
-  const { username, firstName, lastName, age, gender } = useSelector(
+  const user = useSelector(
     (state) => state.session.user
   );
+
   const token = useSelector((state) => state.session.token);
   const [isDeleteAccountOpen, toggleDeleteAccountOpen] = useBoolean();
   const [isEditAccountOpen, toggleEditAccountOpen] = useBoolean();
@@ -29,21 +30,15 @@ export function UserProfile() {
       });
   };
 
-  const saveChanges = (username, firstName, lastName, age, gender) => {
-    dispatch(setUserData(username, firstName, lastName, age, gender))
-    editUserRequest(token, {
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-      age: age,
-      gender: gender,
-    })
+  const saveChanges = (newUser) => {
+    editUserRequest(token, newUser)
       .then((response) => {
         console.log(response)
         if (response.error) {
           console.log(response.error)
         } else {
           toggleEditAccountOpen()
+          dispatch(setUserData({...user, ...newUser}))
         }
       })
       .catch((error) => {
@@ -70,20 +65,20 @@ export function UserProfile() {
             </div>
             <div className="data-group name">
               <h2>
-                {firstName} {lastName}
+                {user.firstName} {user.lastName}
               </h2>
             </div>
             <div className="data-group">
               <div className="data-label">Username</div>
-              <div>{username}</div>
+              <div>{user.username}</div>
             </div>
             <div className="data-group">
               <div className="data-label">Age</div>
-              <div>{age}</div>
+              <div>{user.age}</div>
             </div>
             <div className="data-group">
               <div className="data-label">Gender</div>
-              <div>{gender}</div>
+              <div>{user.gender}</div>
             </div>
           </div>
         </div>
@@ -123,11 +118,11 @@ export function UserProfile() {
               <div className="modal-content">
                 <EditUserProfile
                   saveChanges={saveChanges}
-                  username={username}
-                  firstName={firstName}
-                  lastName={lastName}
-                  age={age}
-                  gender={gender}
+                  username={user.username}
+                  firstName={user.firstName}
+                  lastName={user.lastName}
+                  age={user.age}
+                  gender={user.gender}
                 />
               </div>
             </div>

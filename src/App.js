@@ -9,7 +9,6 @@ import { Events } from "./modules/Events/Events";
 import { MainNav } from "./components/MainNav/MainNav";
 import { useSelector } from "react-redux";
 import { logout } from "./actionCreators/sessionActionCreators";
-import { setCurrentUserData } from "./actionCreators/userActionCreators";
 import { useDispatch } from "react-redux";
 import { checkTokenRequest, currentUserRequest } from "./api/repository";
 

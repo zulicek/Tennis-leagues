@@ -15,13 +15,7 @@ export const sessionReducer = (state = {}, action) => {
     case "SET_USER_DATA":
       return {
         ...state,
-        user: {
-          username: action.username,
-          firstName: action.firstName,
-          lastName: action.lastName,
-          age: action.age,
-          gender: action.gender,
-        },
+        user: action.user,
       };
     default:
       return state;
