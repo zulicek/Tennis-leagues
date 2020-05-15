@@ -61,10 +61,10 @@ header {
         font-weight: 500;
         position: relative;
         &:hover {
-          text-decoration: underline;
+         color: $tertiary-color;
         }
         &.active {
-          text-decoration: underline;
+          color: $tertiary-color;
         }
       }
 
@@ -88,11 +88,11 @@ header {
     margin: auto 0 0;
     cursor: pointer;
     position: relative;
-    color: #ffffff;
+    color: $white;
     display: flex;
     align-items: center;
     &:hover {
-      text-decoration: underline;
+      color: $tertiary-color;
     }
   }
 

@@ -86,7 +86,7 @@ export function UserProfile() {
           <Modal>
             <div className="modal-content delete-account">
               <div className="modal-header">
-                <p>Are you sure you want to delete yout account?</p>
+                <p>Are you sure you want to delete your account?</p>
                 <button className="close" onClick={toggleDeleteAccountOpen}>
                   X
                 </button>

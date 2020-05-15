@@ -19,8 +19,8 @@ export const validateRegister = (
     errors.lastName = "Last name can't be empty";
   }
 
-  if (age && age < 0) {
-    errors.birthday = "Age has to be greater than 0";
+  if (age && age < 13) {
+    errors.birthday = "Age has to be greater than 13";
   }
 
   if (!gender) {

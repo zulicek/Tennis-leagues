@@ -31,19 +31,19 @@ export function MainNav() {
         <nav role="navigation">
           <ul>
             <li>
-              <NavLink exact to="/">
+              <NavLink exact to="/" onClick={toggleOpen}>
                 <i className="fa fa-trophy" aria-hidden="true"></i>
                 <div>Leagues</div>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/events">
+              <NavLink to="/events" onClick={toggleOpen}>
                 <i className="fa fa-calendar" aria-hidden="true"></i>
                 <div>Events</div>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/profile">
+              <NavLink to="/profile" onClick={toggleOpen}>
                 <i className="fa fa-user" aria-hidden="true"></i>
                 <div>Profile</div>
               </NavLink>
