@@ -3,14 +3,14 @@
 .edit-account {
   .form-wrapper {
     min-height: auto;
-      background: transparent;
-      form {
-        padding: 0 48px 32px;
-      }
-      i {
-        color: $darkgray;
-      }
+    background: transparent;
+    form {
+      padding: 0 48px 32px;
     }
+    i {
+      color: $darkgray;
+    }
+  }
 
   .input-wrapper {
     input {
@@ -45,6 +45,14 @@
   .label-inline {
     > label {
       color: $black;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .form-wrapper {
+      form {
+        background: transparent;
+      }
     }
   }
 }

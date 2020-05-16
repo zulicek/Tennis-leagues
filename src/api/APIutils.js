@@ -10,7 +10,7 @@ const request = options => {
       return response.json();
     })
     .catch(error => {
-      console.log("API", error)
+      console.log(error)
       return error.json();
     });
 };
