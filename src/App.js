@@ -10,7 +10,7 @@ import { MainNav } from "./components/MainNav/MainNav";
 import { useSelector } from "react-redux";
 import { logout } from "./actionCreators/sessionActionCreators";
 import { useDispatch } from "react-redux";
-import { checkTokenRequest, currentUserRequest } from "./api/repository";
+import { checkTokenRequest } from "./api/repository";
 
 export function App() {
   const dispatch = useDispatch();

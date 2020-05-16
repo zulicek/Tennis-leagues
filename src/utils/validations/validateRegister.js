@@ -1,13 +1,13 @@
 import { validateCredentials } from './validateCredentials.js'
 
-export const validateRegister = (
+export const validateRegister = ({
   username,
   password,
   firstName,
   lastName,
   age,
   gender
-) => {
+}) => {
 
   const errors = { ...validateCredentials(username, password) }
 
@@ -19,8 +19,9 @@ export const validateRegister = (
     errors.lastName = "Last name can't be empty";
   }
 
-  if (age && age < 13) {
-    errors.birthday = "Age has to be greater than 13";
+  if (!age || age < 13) {
+    errors.age = "Age has to be greater than 13";
+    console.log()
   }
 
   if (!gender) {
