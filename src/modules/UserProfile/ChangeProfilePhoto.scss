@@ -1,0 +1,54 @@
+@import "./../../variables.scss";
+
+.change-photo {
+  width: 500px;
+  .form-wrapper {
+    min-height: auto;
+    background: transparent;
+    form {
+      .input-wrapper {
+        height: auto;
+        margin: 0;
+        input {
+          color: $darkgray;
+          -webkit-text-fill-color: $darkgray;
+          height: auto;
+          padding: 0;
+        }
+      }
+    }
+    i {
+      color: $darkgray;
+    }
+  }
+
+  .user-image-wrapper {
+    width: 360px;
+    height: 360px;
+    padding: 0 32px 32px 0;
+    position: relative;
+    > img {
+      object-fit: cover;
+      object-position: center center;
+      width: 100%;
+      height: 100%;
+    }
+
+    button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: absolute;
+      top: 32px;
+      right: 0;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .form-wrapper {
+      form {
+        background: transparent;
+      }
+    }
+  }
+}

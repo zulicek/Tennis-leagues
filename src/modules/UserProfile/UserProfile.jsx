@@ -6,12 +6,14 @@ import { Modal } from "../../components/Modal/Modal";
 import { deleteUserRequest } from "../../api/repository";
 import { logout } from "../../actionCreators/sessionActionCreators";
 import { EditUserProfile } from "./EditUserProfile";
+import { ChangeProfilePhoto } from "./ChangeProfilePhoto";
 
 export function UserProfile() {
   const user = useSelector((state) => state.session.user);
   const token = useSelector((state) => state.session.token);
   const [isDeleteAccountOpen, toggleDeleteAccountOpen] = useBoolean();
   const [isEditAccountOpen, toggleEditAccountOpen] = useBoolean();
+  const [isChangePhotoOpen, toggleChangePhotoOpen] = useBoolean();
   const dispatch = useDispatch();
 
   const deleteAccount = () => {
@@ -33,10 +35,18 @@ export function UserProfile() {
       <div className="user-profile">
         <div className="user-data-wrapper">
           <div className="user-image-wrapper">
-            <img src="https://images.pexels.com/photos/1407818/pexels-photo-1407818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="user profile"/>
+            {user.image ? <img
+              src={user.image}
+              alt="user profile"
+            /> :
+            <div>Nema slike</div>
+            }  
           </div>
           <div className="user-data">
             <div className="actions">
+              <button onClick={toggleChangePhotoOpen}>
+                <i className="fa fa-camera" aria-hidden="true"></i>
+              </button>
               <button onClick={toggleEditAccountOpen}>
                 <i className="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -99,6 +109,25 @@ export function UserProfile() {
               <div className="modal-content">
                 <EditUserProfile
                   toggleModal={toggleEditAccountOpen}
+                  user={user}
+                />
+              </div>
+            </div>
+          </Modal>
+        )}
+
+        {isChangePhotoOpen && (
+          <Modal>
+            <div className="modal-content change-photo">
+              <div className="modal-header">
+                <p>Change your profile photo</p>
+                <button className="close" onClick={toggleChangePhotoOpen}>
+                  X
+                </button>
+              </div>
+              <div className="modal-content">
+                <ChangeProfilePhoto
+                  toggleModal={toggleChangePhotoOpen}
                   user={user}
                 />
               </div>
