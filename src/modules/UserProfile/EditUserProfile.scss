@@ -6,6 +6,10 @@
     background: transparent;
     form {
       padding: 0 48px 32px;
+
+      .btn {
+        margin-top: 24px;
+      }
     }
     i {
       color: $darkgray;

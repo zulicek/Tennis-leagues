@@ -7,8 +7,10 @@
 
   .actions {
     position: absolute;
-    top: 16px;
     right: 16px;
+    top: calc(100vw - 65px);
+    display: flex;
+    flex-direction: row;
     > button {
       margin-left: 4px;
       border: none;
@@ -29,14 +31,16 @@
     color: $black;
     width: 700px;
     box-sizing: border-box;
-    display: flex;
     justify-content: flex-end;
     border: 1px solid $gray;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 15px 15px;
     .user-data {
-      width: calc(100% - 376px);
       box-sizing: border-box;
-      padding: 64px 32px;
+      width: 100%;
+      padding: 0 32px 32px;
     }
     .data-group {
       margin-bottom: 16px;
@@ -65,17 +69,70 @@
 
   .user-image-wrapper {
     background: $white;
-    position: absolute;
     top: -55px;
-    left: 16px;
-    width: 360px;
-    height: 360px;
     border: 1px solid $black;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    left: 0;
     > img {
       object-fit: cover;
       object-position: center center;
       width: 100%;
       height: 100%;
+      position: absolute;
+    }
+  }
+
+  @media (min-width: 390px) {
+    .user-data-wrapper {
+      .user-image-wrapper {
+        width: 360px;
+        height: 360px;
+        padding-bottom: 0;
+        img {
+          position: relative;
+        }
+      }
+      .user-data {
+        width: auto;
+      }
+    }
+    .actions {
+      top: 324px;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .actions {
+      top: 16px;
+      flex-direction: column;
+      button {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  @media (min-width: 767px) {
+    .user-data-wrapper {
+      margin: 0 auto;
+      flex-direction: row;
+      .user-data {
+        padding: 64px;
+      }
+      .user-image-wrapper {
+        position: absolute;
+        left: 16px;
+      }
+
+      .user-data {
+        width: calc(100% - 376px);
+        padding: 64px 32px;
+        .actions {
+          flex-direction: row;
+        }
+      }
     }
   }
 
@@ -86,65 +143,18 @@
         padding: 64px;
         width: calc(100% - 416px);
       }
-    }
 
-    .user-image-wrapper {
+      .user-image-wrapper {
         width: 400px;
         height: 400px;
       }
-  }
 
-  @media (max-width: 767px) {
-    .user-data-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0 15px 15px;
-
-      .user-image-wrapper {
-        position: relative;
-        left: 0;
+      .actions {
+        flex-direction: row;
       }
-
-      .user-data {
-        width: auto;
-        padding: 0 32px 32px;
-      }
-    }
-    .actions {
-      display: flex;
-      flex-direction: column;
-      button {
-        margin-bottom: 8px;
-      }
-    }
-  }
-
-  @media (max-width: 576px) {
-    .actions {
-      top: 324px;
-      flex-direction: row;
-      margin-bottom: 0;
-    }
-  }
-
-  @media (max-width: 390px) {
-    .user-data-wrapper {
-      .user-image-wrapper {
-        width: 100%;
-        height: 0;
-        padding-bottom: 100%;
-        img {
-          position: absolute;
-        }    
-      }
-    }
-    .actions {
-      top: calc(100vw - 65px);
     }
   }
 }
-
 
 .modal-content {
   display: flex;
@@ -161,7 +171,6 @@
     align-items: center;
     justify-content: flex-end;
     padding: 1rem;
-    border-top: 1px solid $lightgray;
   }
 
   .close {
@@ -176,26 +185,33 @@
     top: 24px;
     cursor: pointer;
     &:hover {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 
-  &.delete-account {
-    width: 360px;
-  }
-
+  &.delete-account,
   &.edit-account {
-    width: 500px;
+    width: 100%;
+    height: 100%;
+    .modal-header {
+      margin-bottom: 24px;
+    }
   }
 
-  @media (max-width: 576px) {
-    &.delete-account,  &.edit-account {
-      width: 100%;
-      height: 100%;
+  @media (min-width: 576px) {
+    &.delete-account,
+    &.edit-account {
+      .modal-header {
+        margin-bottom: 0;
+      }
     }
 
-    .modal-header {
-      margin-bottom: 32px;
+    &.delete-account {
+      width: 360px;
+    }
+
+    &.edit-account {
+      width: 500px;
     }
   }
 }
