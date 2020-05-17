@@ -1,15 +1,16 @@
-import { validateCredentials } from './validateCredentials.js'
-
-export const validateRegister = ({
+export const validateEditUserData = ({
   username,
-  password,
   firstName,
   lastName,
   age,
-  gender
+  gender,
 }) => {
 
-  const errors = { ...validateCredentials(username, password) }
+  let errors = {};
+  
+  if (!username) {
+    errors.username = "Username can't be empty";
+  }
 
   if (!firstName) {
     errors.firstName = "First name can't be empty";

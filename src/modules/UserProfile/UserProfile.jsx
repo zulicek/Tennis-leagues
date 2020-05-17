@@ -3,15 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import "./UserProfile.scss";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
 import { Modal } from "../../components/Modal/Modal";
-import { deleteUserRequest, editUserRequest } from "../../api/repository";
-import { logout, setUserData } from "../../actionCreators/sessionActionCreators";
+import { deleteUserRequest } from "../../api/repository";
+import { logout } from "../../actionCreators/sessionActionCreators";
 import { EditUserProfile } from "./EditUserProfile";
 
 export function UserProfile() {
-  const user = useSelector(
-    (state) => state.session.user
-  );
-
+  const user = useSelector((state) => state.session.user);
   const token = useSelector((state) => state.session.token);
   const [isDeleteAccountOpen, toggleDeleteAccountOpen] = useBoolean();
   const [isEditAccountOpen, toggleEditAccountOpen] = useBoolean();
@@ -30,29 +27,13 @@ export function UserProfile() {
       });
   };
 
-  const saveChanges = (newUser) => {
-    editUserRequest(token, newUser)
-      .then((response) => {
-        console.log(response)
-        if (response.error) {
-          console.log(response.error)
-        } else {
-          toggleEditAccountOpen()
-          dispatch(setUserData({...user, ...newUser}))
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   return (
     <>
       <h1>User profile</h1>
       <div className="user-profile">
         <div className="user-data-wrapper">
           <div className="user-image-wrapper">
-            <img src="https://images.pexels.com/photos/1407818/pexels-photo-1407818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+            <img src="https://images.pexels.com/photos/1407818/pexels-photo-1407818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="user profile"/>
           </div>
           <div className="user-data">
             <div className="actions">
@@ -117,12 +98,8 @@ export function UserProfile() {
               </div>
               <div className="modal-content">
                 <EditUserProfile
-                  saveChanges={saveChanges}
-                  username={user.username}
-                  firstName={user.firstName}
-                  lastName={user.lastName}
-                  age={user.age}
-                  gender={user.gender}
+                  toggleModal={toggleEditAccountOpen}
+                  user={user}
                 />
               </div>
             </div>
