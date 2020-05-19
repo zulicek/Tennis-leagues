@@ -13,7 +13,7 @@ import FileBase64 from "react-file-base64";
 
 export const ChangeProfilePhoto = ({ toggleModal, user }) => {
   const [errors, setErrors] = useState({});
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState();
   const token = useSelector((state) => state.session.token);
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useBoolean(false);
@@ -29,34 +29,16 @@ export const ChangeProfilePhoto = ({ toggleModal, user }) => {
   const saveChanges = (e) => {
     e.preventDefault();
 
-    if (image) {
-      const errs = validateImage(image);
-      setErrors(errs);
+    let errs = {}
 
-      if (isObjectEmpty(errs)) {
-        setIsLoading(true);
-        editUserRequest(token, { image: image.base64 })
-          .then((response) => {
-            if (response.error) {
-              setErrors((prevErrors) => ({
-                ...prevErrors,
-                photoError: response.error,
-              }));
-              setIsLoading(false);
-            } else {
-              dispatch(setUserData({ ...user, image: image.base64 }));
-              setIsLoading(false);
-              toggleModal();
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-            setIsLoading(false);
-          });
-      }
-    } else {
+    if (image) {
+      errs = validateImage(image);
+      setErrors(errs);
+    }
+
+    if (isObjectEmpty(errs)) {
       setIsLoading(true);
-      editUserRequest(token, { image: null })
+      editUserRequest(token, { image: image })
         .then((response) => {
           if (response.error) {
             setErrors((prevErrors) => ({
@@ -65,7 +47,7 @@ export const ChangeProfilePhoto = ({ toggleModal, user }) => {
             }));
             setIsLoading(false);
           } else {
-            dispatch(setUserData({ ...user, image: null }));
+            dispatch(setUserData({ ...user, image: image }));
             setIsLoading(false);
             toggleModal();
           }
@@ -75,16 +57,17 @@ export const ChangeProfilePhoto = ({ toggleModal, user }) => {
           setIsLoading(false);
         });
     }
-  };
+  }
 
   return (
     <>
       {isLoading && <Loader />}
       <div className="form-wrapper">
         <form onSubmit={saveChanges}>
-          {user.image && (
+          {(image || user.image) && (
             <div className="user-image-wrapper">
-              <img src={user.image} />
+              {image && <img src={image.base64}/>}
+              {!image && user.image && <img src={user.image.base64}/>}
               <button onClick={deletePhoto}>
                 <i className="fa fa-trash" aria-hidden="true"></i>
               </button>

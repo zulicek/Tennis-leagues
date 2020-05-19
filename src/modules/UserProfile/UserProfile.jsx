@@ -7,6 +7,7 @@ import { deleteUserRequest } from "../../api/repository";
 import { logout } from "../../actionCreators/sessionActionCreators";
 import { EditUserProfile } from "./EditUserProfile";
 import { ChangeProfilePhoto } from "./ChangeProfilePhoto";
+import {Logo} from "../../components/Logo/Logo"
 
 export function UserProfile() {
   const user = useSelector((state) => state.session.user);
@@ -36,10 +37,10 @@ export function UserProfile() {
         <div className="user-data-wrapper">
           <div className="user-image-wrapper">
             {user.image ? <img
-              src={user.image}
+              src={user.image.base64}
               alt="user profile"
             /> :
-            <div>Nema slike</div>
+            <Logo />
             }  
           </div>
           <div className="user-data">

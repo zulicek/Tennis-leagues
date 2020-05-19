@@ -19,6 +19,7 @@
     }
     i {
       color: $darkgray;
+      bottom: 0;
     }
   }
 
@@ -39,7 +40,7 @@
       background: transparent;
       cursor: pointer;
       position: absolute;
-      top: 32px;
+      top: 16px;
       right: 0;
     }
   }
