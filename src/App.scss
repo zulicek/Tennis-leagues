@@ -13,16 +13,11 @@
 
         h1 {
             margin: 64px auto;
-            width: 700px;
         }
     }
 
     @media (min-width: 991px) {
         max-width: 880px !important; 
         margin: 0 auto !important;
-
-        h1 {
-            width: 880px;
-        }
     }
 }

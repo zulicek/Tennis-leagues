@@ -14,31 +14,25 @@ import { checkTokenRequest } from "./api/repository";
 
 export function App() {
   const dispatch = useDispatch();
-  const { user, keepLoggedIn, token } = useSelector((state) => state.session);
+  const { keepLoggedIn, token } = useSelector((state) => state.session);
 
-  const checkToken = () => {
-    checkTokenRequest({
-      token: token
-    })
-      .then((response) => {
-        if (response.error) {
-          dispatch(logout());
-        }
-      })
-      .catch(() => {  
+  useEffect(() => {
+    if (typeof keepLoggedIn === "boolean") {
+      if (keepLoggedIn) {
+        checkTokenRequest({
+          token: token,
+        })
+          .then((response) => {
+            if (response.error) {
+              dispatch(logout());
+            }
+          })
+          .catch(() => {
+            dispatch(logout());
+          });
+      } else {
         dispatch(logout());
-      });
-  }
-
-  useEffect(() => {
-    checkToken()
-  }, [token])
-
-  useEffect(() => {
-    if (keepLoggedIn) {
-      checkToken();
-    } else {
-      dispatch(logout());
+      }
     }
   }, []);
 
