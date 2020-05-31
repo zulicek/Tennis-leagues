@@ -71,52 +71,43 @@ export const EditUserProfile = ({ toggleModal, user }) => {
             type="text"
             value={user.username}
             onChange={handleChange("username")}
+            error={errors.username}
           />
-          {errors.username && <div className="error">{errors.username}</div>}
 
-          <div className="two-col">
-            <div className="col">
-              <Input
-                name="First name"
-                icon="fa fa-user"
-                type="text"
-                value={user.firstName}
-                onChange={handleChange("firstName")}
-              />
-              {errors.firstName && (
-                <div className="error">{errors.firstName}</div>
-              )}
-            </div>
-
-            <div className="col">
-              <Input
-                name="Last name"
-                icon="fa fa-user"
-                type="text"
-                value={user.lastName}
-                onChange={handleChange("lastName")}
-              />
-              {errors.lastName && (
-                <div className="error">{errors.lastName}</div>
-              )}
-            </div>
+          <div className="form-group">
+            <Input
+              name="First name"
+              icon="fa fa-user"
+              type="text"
+              value={user.firstName}
+              onChange={handleChange("firstName")}
+              error={errors.firstName}
+            />
+          
+            <Input
+              name="Last name"
+              icon="fa fa-user"
+              type="text"
+              value={user.lastName}
+              onChange={handleChange("lastName")}
+              error={errors.lastName}
+            />
           </div>
 
-          <div className="label-inline ">
-            <i className="fa fa-birthday-cake" aria-hidden="true"></i>
-            <label>Age</label>
-            <Input
-              type="number"
-              onChange={handleChange("age")}
-              value={user.age}
+          <Input
+            icon="fa fa-birthday-cake"  
+            type="number" 
+            onChange={handleChange("age")}
+            value={user.age}
+            error={errors.age}
+          />
+
+          <div className="form-group">
+            <Input 
+              icon="fa fa-venus-mars"
+              name="Gender"
             />
 
-            {errors.age && <div className="error">{errors.age}</div>}
-          </div>
-
-          <div className="label-inline radios">
-            <i className="fa fa-venus-mars" aria-hidden="true"></i>
-            <label>Gender</label>
             <Input
               name="Male"
               type="radio"
@@ -139,8 +130,10 @@ export const EditUserProfile = ({ toggleModal, user }) => {
                   : user.gender === "Female"
               }
             />
+
+            {errors.gender && <div className="error">{errors.gender}</div>}
           </div>
-          {errors.gender && <div className="error">{errors.gender}</div>}
+          
 
           {errors.editError && (
             <div className="error-wrapper">

@@ -2,33 +2,25 @@
 
 .edit-account {
   .form-wrapper {
+    color: $darkgray;
     min-height: auto;
-    background: transparent;
-    form {
-      padding: 0 48px 32px;
 
-      .btn {
-        margin-top: 24px;
-      }
-    }
-    i {
-      color: $darkgray;
+    form {
+      min-height: auto;
+      background: transparent;
     }
   }
 
   .input-wrapper {
+    &:not(.no-border) {
+      border-bottom: 1px solid $gray;
+    }
+    
     input {
       color: $darkgray;
-      border-bottom: 1px solid $gray;
       -webkit-text-fill-color: $darkgray;
-      &::placeholder {
-        color: $darkgray;
-      }
       &:focus {
         border-color: $darkgray;
-      }
-      & ~ label {
-        color: $darkgray;
       }
 
       &[type="radio"] {
@@ -42,20 +34,6 @@
             background: $darkgray;
           }
         }
-      }
-    }
-  }
-
-  .label-inline {
-    > label {
-      color: $black;
-    }
-  }
-
-  @media (min-width: 576px) {
-    .form-wrapper {
-      form {
-        background: transparent;
       }
     }
   }

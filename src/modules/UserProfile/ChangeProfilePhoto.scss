@@ -1,11 +1,10 @@
 @import "./../../variables.scss";
 
 .change-photo {
-  width: 500px;
   .form-wrapper {
     min-height: auto;
-    background: transparent;
     form {
+      background: transparent;
       .input-wrapper {
         height: auto;
         margin: 0;
@@ -42,14 +41,6 @@
       position: absolute;
       top: 16px;
       right: 0;
-    }
-  }
-
-  @media (min-width: 576px) {
-    .form-wrapper {
-      form {
-        background: transparent;
-      }
     }
   }
 }

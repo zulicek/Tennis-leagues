@@ -6,8 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-family-text;
-  line-height: 1.2;
-  min-height: 100vh;
   position: relative;
 }
 
@@ -23,43 +21,10 @@ body {
 }
 p {
   margin: 0;
-  line-height: 24px;
 }
 
-.btn {
-  font-size: 16px;
-  line-height: 1.2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 24px;
-  min-width: 128px;
-  height: 48px;
-  border-radius: 24px;
-  z-index: 1;
-  margin: 0 auto;
-  cursor: pointer;
-  font-family: $font-family-text;
-  border: 0;
-  transition: all .4s ease-in-out;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    transform: scale(1.15);
-  }
-}
-
-.btn-default {
-  color: $white;
-  background-color: $primary-color;
-  &:hover, &:focus, &:active {
-    transform: scale(1.15);
-  }
-}
-
-.btn-inverse {
-  color: $text-color;
-  background: $white;
-  border: 1px solid $primary-color;
+a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
 }

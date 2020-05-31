@@ -32,7 +32,6 @@
     width: 700px;
     box-sizing: border-box;
     justify-content: flex-end;
-    border: 1px solid $gray;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,7 +69,6 @@
   .user-image-wrapper {
     background: $white;
     top: -55px;
-    border: 1px solid $black;
     width: 100%;
     height: 0;
     padding-bottom: 100%;
@@ -161,59 +159,50 @@
 .modal-content {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 
   .modal-header {
-    padding: 24px;
     border-bottom: 1px solid $lightgray;
-    padding-right: 64px;
+    display: flex;
+    margin-bottom: 24px;
+    > p {
+      flex: 1;
+      padding: 24px;
+    }
   }
 
   .modal-actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     padding: 1rem;
+    text-align: center;
+    .btn {
+      display: inline-block;
+      margin: 0 16px;
+    }
   }
 
   .close {
-    font-size: 16px;
     font-weight: bold;
-    color: $gray;
+    color: #bfbfbf;
     background-color: transparent;
     border: 0;
     -webkit-appearance: none;
-    position: absolute;
-    right: 12px;
-    top: 24px;
     cursor: pointer;
+    padding: 24px;
     &:hover {
       opacity: 0.5;
     }
   }
 
-  &.delete-account,
-  &.edit-account {
-    width: 100%;
-    height: 100%;
-    .modal-header {
-      margin-bottom: 24px;
-    }
-  }
+  @media (min-width: 776px) {
+    width: 500px;
 
-  @media (min-width: 576px) {
-    &.delete-account,
-    &.edit-account {
-      .modal-header {
-        margin-bottom: 0;
-      }
+    .modal-header {
+      margin-bottom: 0;
     }
 
     &.delete-account {
       width: 360px;
-    }
-
-    &.edit-account {
-      width: 500px;
     }
   }
 }
