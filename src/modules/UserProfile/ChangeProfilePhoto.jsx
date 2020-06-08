@@ -45,17 +45,17 @@ export const ChangeProfilePhoto = ({ toggleModal, user }) => {
               ...prevErrors,
               photoError: response.error,
             }));
-            setIsLoading(false);
           } else {
             dispatch(setUserData({ ...user, image: image }));
-            setIsLoading(false);
             toggleModal();
           }
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
           setIsLoading(false);
-        });
+        })
     }
   }
 

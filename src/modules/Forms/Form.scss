@@ -1,18 +1,21 @@
 @import "./../../variables.scss";
 
 .form-wrapper {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $darkgray;
 
-  &.auth-form {
-    color: $white;
-
-    .keep-logged-in {
-      margin: 32px 0 0;
-      text-align: left;
-    }
+  form {
+    padding: 32px;
+    width: 100%;
+    background: transparent;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
 
   .logo-wrapper {
@@ -35,17 +38,6 @@
 
   .btn {
     margin: 32px auto 0;
-  }
-
-  form {
-    padding: 32px;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: linear-gradient($secondary-color, $primary-color);
-    text-align: center;
   }
 
   .form-title {
@@ -76,9 +68,45 @@
       }
   }
 
-  .auth-link {
-    font-size: 12px;
-    margin-top: 2rem;
+  &.auth-form {
+    color: $white;
+    min-height: 100vh;
+
+    .keep-logged-in {
+      margin: 32px 0 0;
+      text-align: left;
+    }
+
+    form {
+      background: linear-gradient($secondary-color, $primary-color);
+      
+      input {
+        color: $white;
+        -webkit-text-fill-color: $white;
+
+        &::placeholder {
+          color: $white;
+        }
+
+        &[type="radio"] {
+          & ~ label {
+            &::before {
+              border: 2px solid $white;
+            }
+          }
+          &:checked ~ label {
+            &::after {
+              background: $white;
+            }
+          }
+        }
+      }
+    }
+
+    .auth-link {
+      font-size: 12px;
+      margin-top: 2rem;
+    }
   }
 }
 

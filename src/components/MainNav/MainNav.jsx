@@ -8,7 +8,7 @@ import { logout } from "../../actionCreators/sessionActionCreators";
 import { useSelector } from "react-redux";
 
 export function MainNav() {
-  const { username, firstName, lastName, image } = useSelector(
+  const { firstName, lastName, image } = useSelector(
     (state) => state.session.user
   );
   const [isOpen, toggleOpen] = useBoolean();
@@ -26,7 +26,6 @@ export function MainNav() {
             {image ? <img src={image.base64} alt="user profile" /> : <Logo />}
         </NavLink>
         </div>
-        <div className="name username">{username}</div>
         <div className="name">
           {firstName} {lastName}
         </div>

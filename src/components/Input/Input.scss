@@ -11,7 +11,8 @@
     border-bottom: none;
   }
   input {
-    color: $white;
+    color: $darkgray;
+    -webkit-text-fill-color: $darkgray;
     box-sizing: border-box;
     height: 62px;
     background: transparent;
@@ -19,13 +20,12 @@
     outline: none;
     border: none;
     width: 100%;
-    -webkit-text-fill-color: $white;
     -webkit-box-shadow: 0 transparent inset;
     &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus {
       background: transparent;
     }
     &::placeholder {
-      color: $white;
+      color: $darkgray;
       opacity: 1;
       font-family: $font-family-text;
     }
@@ -61,7 +61,7 @@
         &::before {
           content: "";
           position: absolute;
-          border: 2px solid $white;
+          border: 2px solid $darkgray;
           border-radius: 100%;
           height: 16px;
           width: 16px;
@@ -73,7 +73,7 @@
         &::after {
           content: "";
           position: absolute;
-          background: $white;
+          background: $darkgray;
           border-radius: 100%;
           height: 12px;
           width: 12px;

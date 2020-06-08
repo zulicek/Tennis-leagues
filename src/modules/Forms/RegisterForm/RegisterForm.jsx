@@ -38,7 +38,6 @@ export function RegisterForm() {
               ...prevErrors,
               registerError: response.error,
             }));
-            setIsLoading(false);
           } else {
             loginRequest({
               username: user.username,
@@ -53,20 +52,24 @@ export function RegisterForm() {
                 } else {
                   console.log(response);
                   dispatch(login(response.user, response.token, false));
-                  setIsLoading(false);
                   history.push("/");
                 }
               })
               .catch((error) => {
                 console.log(error);
+               
+              })
+              .finally(() => {
                 setIsLoading(false);
-              });
+              })
           }
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
           setIsLoading(false);
-        });
+        })
     }
   };
 

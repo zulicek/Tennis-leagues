@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../Forms/Form.scss";
-import "./EditUserProfile.scss";
 import { Button } from "../../components/Button/Button";
 import { Input } from "../../components/Input/Input";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
@@ -46,17 +45,17 @@ export const EditUserProfile = ({ toggleModal, user }) => {
               ...prevErrors,
               editError: response.error,
             }));
-            setIsLoading(false);
           } else {
             dispatch(setUserData({ ...user, ...newUserData }));
-            setIsLoading(false);
             toggleModal();
           }
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error);     
+        })
+        .finally(() => {
           setIsLoading(false);
-        });
+        })
     }
   };
 

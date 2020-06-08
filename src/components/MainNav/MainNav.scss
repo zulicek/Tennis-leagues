@@ -37,12 +37,11 @@ header {
 
   .name {
     font-size: 24px;
-    margin: 0;
+    margin: 16px 0 8px;
     padding: 0;
     font-weight: 600;
     font-family: $font-family-titles;
     text-align: center;
-    margin-bottom: 8px;
     &.username {
       margin-top: 32px;
       font-size: 18px;

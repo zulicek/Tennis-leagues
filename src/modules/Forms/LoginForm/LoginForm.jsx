@@ -40,17 +40,17 @@ export const LoginForm = () => {
               ...prevErrors,
               credentials: "Wrong credentials. Try again.",
             }));
-            setIsLoading(false);
           } else {
             dispatch(login(response.user, response.token,  keepLoggedIn));
-            setIsLoading(false);
             history.push("/");
           }
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
           setIsLoading(false);
-        });
+        })
     }
   };
 

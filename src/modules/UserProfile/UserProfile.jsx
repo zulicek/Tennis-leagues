@@ -80,7 +80,7 @@ export function UserProfile() {
               <div className="modal-header">
                 <p>Are you sure you want to delete your account?</p>
                 <button className="close" onClick={toggleDeleteAccountOpen}>
-                  X
+                  &#10005;
                 </button>
               </div>
               <div className="modal-actions">
@@ -100,11 +100,11 @@ export function UserProfile() {
 
         {isEditAccountOpen && (
           <Modal>
-            <div className="modal-content edit-account">
+            <div className="modal-content">
               <div className="modal-header">
                 <p>Edit your profile</p>
                 <button className="close" onClick={toggleEditAccountOpen}>
-                  X
+                  &#10005;
                 </button>
               </div>
               <div className="modal-content">
@@ -123,7 +123,7 @@ export function UserProfile() {
               <div className="modal-header">
                 <p>Change your profile photo</p>
                 <button className="close" onClick={toggleChangePhotoOpen}>
-                  X
+                  &#10005;
                 </button>
               </div>
               <div className="modal-content">

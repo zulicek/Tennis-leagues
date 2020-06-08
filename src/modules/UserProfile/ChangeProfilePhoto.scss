@@ -2,22 +2,15 @@
 
 .change-photo {
   .form-wrapper {
-    min-height: auto;
-    form {
-      background: transparent;
-      .input-wrapper {
+    .input-wrapper {
+      height: auto;
+      margin: 0;
+      input {
         height: auto;
-        margin: 0;
-        input {
-          color: $darkgray;
-          -webkit-text-fill-color: $darkgray;
-          height: auto;
-          padding: 0;
-        }
+        padding: 0;
       }
     }
     i {
-      color: $darkgray;
       bottom: 0;
     }
   }
