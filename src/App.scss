@@ -2,15 +2,11 @@
 
 
 .app-main {
-    margin-left: 56px;
-    padding: 30px;
+    margin-top: 56px;
 
-    h1 {
-        text-align: right;
-    }
-
-    @media (min-width: 991px) {
-        
+    @media (min-width: 768px) {
+        max-width: calc(100% - 56px);
+        margin-top: 0;
         margin-left: 56px;
     }
 }

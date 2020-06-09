@@ -9,3 +9,10 @@ export const login = (user, token, keepLoggedIn) => {
 export const logout = () => ({
   type: 'LOGOUT'
 });
+
+export const setUserData = (user) => {
+  return ({
+    type: 'SET_USER_DATA',
+    user: user
+})};
+

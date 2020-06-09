@@ -7,38 +7,32 @@ import { RegisterForm } from "./modules/Forms/RegisterForm/RegisterForm";
 import { UserProfile } from "./modules/UserProfile/UserProfile";
 import { Events } from "./modules/Events/Events";
 import { MainNav } from "./components/MainNav/MainNav";
-import { useSelector, connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { logout } from "./actionCreators/sessionActionCreators";
 import { useDispatch } from "react-redux";
 import { checkTokenRequest } from "./api/repository";
 
 export function App() {
   const dispatch = useDispatch();
-  const { user, keepLoggedIn, token } = useSelector((state) => state.session);
+  const { keepLoggedIn, token } = useSelector((state) => state.session);
 
-  const checkToken = () => {
-    checkTokenRequest({
-      token: token
-    })
-      .then((response) => {
-        if (response.error) {
-          dispatch(logout());
-        } 
-      })
-      .catch(() => {
+  useEffect(() => {
+    if (typeof keepLoggedIn === "boolean") {
+      if (keepLoggedIn) {
+        checkTokenRequest({
+          token: token,
+        })
+          .then((response) => {
+            if (response.error) {
+              dispatch(logout());
+            }
+          })
+          .catch(() => {
+            dispatch(logout());
+          });
+      } else {
         dispatch(logout());
-      });
-  }
-
-  useEffect(() => {
-    checkToken()
-  }, [token])
-
-  useEffect(() => {
-    if (keepLoggedIn) {
-      checkToken();
-    } else {
-      dispatch(logout());
+      }
     }
   }, []);
 

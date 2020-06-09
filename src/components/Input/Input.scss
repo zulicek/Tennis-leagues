@@ -1,38 +1,35 @@
 @import "./../../variables.scss";
 
 .input-wrapper {
+  display: flex;
+  align-items: flex-end;
   flex: 1;
   position: relative;
-  margin: 16px 0 8px;
-  display: flex;
-  align-items: center;
-  height: 62px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 24px;
+  &.no-border {
+    border-bottom: none;
+  }
   input {
-    font-size: 16px;
-    color: $white;
-    line-height: 1.2;
-    width: 100%;
+    color: $darkgray;
+    -webkit-text-fill-color: $darkgray;
     box-sizing: border-box;
     height: 62px;
     background: transparent;
-    padding: 16px 8px 0 32px;
+    padding: 16px 0 0 0;
     outline: none;
     border: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
-    transition: border 1s ease-in-out;
-    -webkit-text-fill-color: $white;
+    width: 100%;
     -webkit-box-shadow: 0 transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
     &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus {
       background: transparent;
     }
     &::placeholder {
-      color: $white;
+      color: $darkgray;
       opacity: 1;
       font-family: $font-family-text;
     }
     &:focus {
-      border-color: rgba(255, 255, 255, 1);
       &::placeholder {
         position: absolute;
         transform: translateY(-30px);
@@ -44,10 +41,9 @@
     & ~ label {
       display: none;
       position: absolute;
-      top: 0;
+      top: 2px;
       left: 32px;
       font-size: 14px;
-      color: $white;
     }
     &:not(:placeholder-shown) ~ label {
       display: block;
@@ -58,7 +54,6 @@
       visibility: hidden;
       & ~ label {
         position: relative;
-        font-size: 16px;
         left: 0;
         padding: 0 0 16px 32px;
         align-self: flex-end;
@@ -66,7 +61,7 @@
         &::before {
           content: "";
           position: absolute;
-          border: 2px solid $white;
+          border: 2px solid $darkgray;
           border-radius: 100%;
           height: 16px;
           width: 16px;
@@ -78,7 +73,7 @@
         &::after {
           content: "";
           position: absolute;
-          background: $white;
+          background: $darkgray;
           border-radius: 100%;
           height: 12px;
           width: 12px;
@@ -90,26 +85,19 @@
 
     &[type="checkbox"] {
       position: absolute;
-      opacity: 0;
-      cursor: pointer;
       height: 0;
       width: 0;
       & + label {
-        display: block;
-        position: relative;
-        padding-left: 32px;
-        font-size: 16px;
-        margin-top: 48px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
-        width: 100%;
         left: 0;
+        position: relative;
+        font-size: 16px;
         &:before {
-          display: block;
           content: "";
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          left: 0;
+          display: block;
+          margin-right: 16px;
           height: 16px;
           width: 16px;
           background-color: $primary-color;
@@ -131,36 +119,18 @@
         display: block;
       }
     }
-  }
-  
-  .show-password {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    color: $white;
-    padding: 16px 0 16px 16px;
-    cursor: pointer;
-    i {
-      left: unset;
-      right: 0;
-    }
-    .tooltip {
-      position: absolute;
-      z-index: 1;
-      top: -24px;
-      left: -61px;
-      width: 95px;
-      font-size: 12px;
-      background: rgba(255,255,255,.5);
-      color: #000;
-      padding: 2px;
-      border-radius: 4px;
-      visibility: hidden;
-    }
-    &:hover {
-      .tooltip {
-        visibility: visible;
+
+    &[type="password"] {
+      & ~ i {
+        cursor: pointer;
       }
     }
+  }
+
+  i  {
+    padding: 0 0 16px;
+    font-size: 20px;
+    min-width: 32px;
+    text-align: left;
   }
 }

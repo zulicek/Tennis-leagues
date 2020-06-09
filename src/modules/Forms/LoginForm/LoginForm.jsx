@@ -23,7 +23,6 @@ export const LoginForm = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useBoolean(false);
 
-
   const onLogin = (e) => {
     e.preventDefault();
     const errs = validateCredentials(username, password)
@@ -41,59 +40,62 @@ export const LoginForm = () => {
               ...prevErrors,
               credentials: "Wrong credentials. Try again.",
             }));
-            setIsLoading(false);
           } else {
             dispatch(login(response.user, response.token,  keepLoggedIn));
-            setIsLoading(false);
             history.push("/");
           }
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
           setIsLoading(false);
-        });
+        })
     }
   };
 
   return (
     <>
       {isLoading && <Loader />}
-      <div className="form-wrapper">
+      <div className="form-wrapper auth-form">
         <form onSubmit={onLogin}>
           <Logo />
           <h1 className="form-title">Log in</h1>
-          <Input
-            name="Username"
-            icon="fa fa-user"
-            type="text"
-            onChange={handleUsernameChange}
-            value={username}
-          />
-          <div className="error">{errors && errors.username}</div>
-
-          <Input
+          <div className="form-field">
+            <Input
+              name="Username"
+              icon="fa fa-user"
+              type="text"
+              onChange={handleUsernameChange}
+              value={username}
+              error={errors.username}
+            />
+          </div>
+          
+          <div className="form-field">
+            <Input
             name="Password"
             icon="fa fa-lock"
             type={show ? "text" : "password"}
             onChange={handlePasswordChange}
             value={password}
             iconDecoration={
-              <div className="show-password" onClick={toggleShow}>
-                <i className="fa fa-eye" aria-hidden="true"></i>
-                <span className="tooltip">Show password</span>
-              </div>
+                <i className="fa fa-eye" aria-hidden="true" title="Show password" onClick={toggleShow}></i>
             }
-          />
-          <div className="error">{errors && errors.password}</div>
+            error={errors.password}
+            />
+          </div>
 
-          <Input
-            name="Keep me logged in"
-            type="checkbox"
-            value="remember"
-            onChange={handlekeepLoggedInChange}
-            checked={keepLoggedIn}
-          />
-
+          <div className="keep-logged-in">
+            <Input
+              name="Keep me logged in"
+              type="checkbox"
+              value="remember"
+              onChange={handlekeepLoggedInChange}
+              checked={keepLoggedIn}
+            />
+          </div>
+        
           <div className="error-wrapper">
             <div className="error">{errors && errors.credentials}</div>
           </div>

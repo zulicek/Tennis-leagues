@@ -5,8 +5,12 @@ import { Logo } from "../Logo/Logo";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actionCreators/sessionActionCreators";
+import { useSelector } from "react-redux";
 
 export function MainNav() {
+  const { firstName, lastName, image } = useSelector(
+    (state) => state.session.user
+  );
   const [isOpen, toggleOpen] = useBoolean();
   const dispatch = useDispatch();
 
@@ -17,37 +21,38 @@ export function MainNav() {
   return (
     <>
       <header className={`${isOpen ? "opened" : ""}`}>
+      <div className="image-wrapper">
         <NavLink to="/profile">
-          <Logo />
+            {image ? <img src={image.base64} alt="user profile" /> : <Logo />}
         </NavLink>
-        <div className="name username">ivanhorvat</div>
-        <div className="name">Ivan Horvat</div>
-        <nav role="navigation">
-          <ul>
-            <li>
-              <NavLink exact to="/">
-                <i className="fa fa-trophy" aria-hidden="true"></i>
-                <div>Leagues</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/events">
-                <i className="fa fa-calendar" aria-hidden="true"></i>
-                <div>Events</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile">
-                <i className="fa fa-user" aria-hidden="true"></i>
-                <div>Profile</div>
-              </NavLink>
-            </li>
-            <li className="logout" onClick={onLogout}>
-                <i className="fa fa-sign-out" aria-hidden="true"></i>
-                <span>Log out</span>
-            </li>
-          </ul>
-        </nav>
+        </div>
+        <div className="name">
+          {firstName} {lastName}
+        </div>
+        <ul>
+          <li>
+            <NavLink exact to="/">
+              <div>Leagues</div>
+              <i className="fa fa-trophy" aria-hidden="true"></i>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/events">
+              <div>Events</div>
+              <i className="fa fa-calendar" aria-hidden="true"></i>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile">
+              <div>Profile</div>
+              <i className="fa fa-user" aria-hidden="true"></i>
+            </NavLink>
+          </li>
+          <li className="logout" onClick={onLogout}>
+            <div>Log out</div>
+            <i className="fa fa-sign-out" aria-hidden="true"></i>
+          </li>
+        </ul>
         <div id="mainnav-toggle" onClick={toggleOpen}>
           <span className="hamburger"></span>
         </div>
