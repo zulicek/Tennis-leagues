@@ -26,3 +26,11 @@
         }
     }
 }
+
+.modal-content {
+    @media (min-width: 776px) {    
+        &.confirm-modal {
+          width: 360px;
+        }
+      }
+}

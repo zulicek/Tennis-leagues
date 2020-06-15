@@ -4,7 +4,7 @@ import { Header } from "./Header";
 import { Content } from "./Content";
 import { useBoolean } from "../../utils/customHooks/UseBoolean";
 
-export function Accordion({ name, type, startDate, location, surface, competitors }) {
+export function Accordion({ name, type, startDate, location, surface, gender, competitors }) {
   const [isOpen, toggleOpen] = useBoolean();
   const contentRef = useRef();
 
@@ -18,6 +18,7 @@ export function Accordion({ name, type, startDate, location, surface, competitor
         startDate={startDate}
         location={location.name}
         surface={surface}
+        gender={gender}
       />
       <Content
         ref={contentRef}

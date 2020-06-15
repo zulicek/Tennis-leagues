@@ -88,9 +88,9 @@ export const LoginForm = () => {
 
           <div className="keep-logged-in">
             <Input
-              name="Keep me logged in"
+              name="remember"
               type="checkbox"
-              value="remember"
+              value="Keep me logged in"
               onChange={handlekeepLoggedInChange}
               checked={keepLoggedIn}
             />

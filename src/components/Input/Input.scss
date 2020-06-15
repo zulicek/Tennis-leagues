@@ -5,7 +5,7 @@
   align-items: flex-end;
   flex: 1;
   position: relative;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba($darkgray, 0.25);
   margin-bottom: 24px;
   &.no-border {
     border-bottom: none;
@@ -55,30 +55,33 @@
       & ~ label {
         position: relative;
         left: 0;
-        padding: 0 0 16px 32px;
+        padding: 16px 0 16px 32px;
         align-self: flex-end;
+        font-size: 16px;
         cursor: pointer;
         &::before {
           content: "";
           position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
           border: 2px solid $darkgray;
           border-radius: 100%;
-          height: 16px;
-          width: 16px;
+          height: 12px;
+          width: 12px;
           left: 0;
-          top: 0;
         }
       }
       &:checked ~ label {
         &::after {
           content: "";
           position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
           background: $darkgray;
           border-radius: 100%;
-          height: 12px;
-          width: 12px;
-          left: 4px;
-          top: 4px;
+          height: 10px;
+          width: 10px;
+          left: 3px;
         }
       }
     }
@@ -124,6 +127,10 @@
       & ~ i {
         cursor: pointer;
       }
+    }
+
+    &[type="date"] {
+      
     }
   }
 

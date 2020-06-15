@@ -1,0 +1,15 @@
+@import "./../../variables.scss";
+
+
+.leagues-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+}
+
+ul {
+    width: 100%;
+    padding-left: 0;
+    list-style-type: none;
+}

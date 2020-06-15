@@ -1,5 +1,7 @@
 import { postJson, getJson, deleteRequest, patchRequest } from './APIutils';
 
+const API_KEY = "lora";
+
 export function loginRequest(loginRequest) {
     return postJson("/api/login", loginRequest);
 }
@@ -26,4 +28,12 @@ export function deleteUserRequest(token) {
 
 export function userDataRequest(token, id) {
     return getJson("/api/users/" + id, token);
+}
+
+export function leaguesRequest(token) {
+    return getJson("/api/leagues/", token, API_KEY);
+}
+
+export function addLeagueRequest(token, newLeague) {
+    return postJson("/api/leagues/", token, newLeague, API_KEY);
 }

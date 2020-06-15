@@ -1,0 +1,10 @@
+@import "./../../variables.scss";
+
+.label-wrapper {
+    display: flex;
+    flex: 1;
+
+    i {
+        padding-right: 16px;
+    }
+}

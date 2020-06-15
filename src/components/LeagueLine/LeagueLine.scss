@@ -1,0 +1,74 @@
+@import './../../variables.scss';
+
+.league-line {
+    border-bottom: 1px solid $lightgray;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: normal;
+        font-family: $font-family-text;
+
+        > * {
+            flex: 0 0 25%;
+            text-align: center;
+    
+            &:first-child {
+                text-align: left;
+            }
+    
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+
+    .title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        font-family: $font-family-titles;
+    }
+
+    time {
+        color: $darkgray;
+        font-size: 14px;
+    }
+
+    i {
+        margin-left: 8px;
+    }
+
+    /* .actions {
+        display: flex;
+        justify-content: flex-end;
+        > * {
+            margin-left: 8px;
+        }
+    } */
+
+    &.clay {
+        i {
+            color: $clay;
+        }
+    }
+
+    &.grass {
+        i {
+            color: $grass;
+        }
+    }
+    &.hard {
+        i {
+            color: $hard;
+        }
+    }
+
+    &.carpet {
+        i {
+            color: $carpet;
+        }
+    }
+}

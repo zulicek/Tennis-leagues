@@ -5,9 +5,8 @@ export function Input({ name, icon, type, onChange, iconDecoration, value, check
   return (
     <div className={`input-wrapper${type === undefined || type === "radio" || type === "checkbox" ? ' no-border' : ''}`}>
       {icon && <i className={icon} aria-hidden="true"></i>}
-      {console.log(type)}
       <input
-        id={name}
+        id={value}
         type={type}
         name={name}
         placeholder={name}
@@ -17,7 +16,7 @@ export function Input({ name, icon, type, onChange, iconDecoration, value, check
           onChange(event.currentTarget.value);
         }}
       />
-      <label id={name} htmlFor={name}>{name}</label>
+      <label htmlFor={value}>{value}</label>
       {iconDecoration}
       {error && (
           <div className="error">{error}</div>

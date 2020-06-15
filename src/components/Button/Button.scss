@@ -17,15 +17,30 @@
     &:hover {
       transform: scale(1.15);
     }
+
+
+  &.btn-default {
+      color: $white;
+      background-color: $primary-color;
+  }
+    
+  &.btn-inverse {
+      background: $white;
+      border: 1px solid $primary-color;
+  }
+
+  &.btn-action {
+    min-width: auto;
+    height: auto;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    background: $black;
+    > i {
+      color: $white;
+      margin-left: 0;
+    }
 }
 
-.btn-default {
-    color: $white;
-    background-color: $primary-color;
-}
-  
-.btn-inverse {
-    background: $white;
-    border: 1px solid $primary-color;
 }
 

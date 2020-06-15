@@ -1,0 +1,42 @@
+@import './../../../variables.scss';
+
+.form-group.multiple-inputs {
+	&.location {
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.label-wrapper {
+			align-items: flex-end;
+			flex: 0 0 calc(50% - 16px);
+			max-width: calc(50% - 16px);
+			label,
+			i {
+				padding-bottom: 16px;
+			}
+		}
+	}
+
+	&.surface {
+		align-items: baseline;
+		.form-field {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			flex: 2;
+		}
+	}
+
+	.input-wrapper {
+		flex: 0 0 calc(50% - 16px);
+		max-width: calc(50% - 16px);
+
+		&:nth-child(odd) {
+			margin-left: 0;
+		}
+
+		&:nth-child(1),
+		&:nth-child(2) {
+			margin-bottom: 0;
+		}
+	}
+}

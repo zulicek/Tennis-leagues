@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.scss";
-import { Leagues } from "./modules/Leagues/Leagues";
+import { LeaguesList } from "./modules/LeaguesList/LeaguesList";
 import { LoginForm } from "./modules/Forms/LoginForm/LoginForm";
 import { RegisterForm } from "./modules/Forms/RegisterForm/RegisterForm";
 import { UserProfile } from "./modules/UserProfile/UserProfile";
 import { Events } from "./modules/Events/Events";
+import { League } from "./modules/League/League";
 import { MainNav } from "./components/MainNav/MainNav";
 import { useSelector } from "react-redux";
 import { logout } from "./actionCreators/sessionActionCreators";
@@ -55,8 +56,11 @@ export function App() {
           <ProtectedRoute path="/profile">
             <UserProfile />
           </ProtectedRoute>
+          <ProtectedRoute path="/leagues/:id">
+            <League />
+          </ProtectedRoute>
           <ProtectedRoute exact path="/">
-            <Leagues />
+            <LeaguesList />
           </ProtectedRoute>
           <Route path="*">
             <h1>404 - page not found</h1>

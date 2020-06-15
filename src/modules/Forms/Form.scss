@@ -27,6 +27,8 @@
 
   .form-group {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     position: relative;
       .input-wrapper:not(:first-child) {
         margin-left: 16px;
@@ -79,6 +81,13 @@
 
     form {
       background: linear-gradient($secondary-color, $primary-color);
+
+      .input-wrapper {
+        border-bottom: 1px solid rgba($white, .5);
+        &.no-border {
+          border-bottom: none;
+        }
+      }
       
       input {
         color: $white;

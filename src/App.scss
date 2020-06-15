@@ -1,8 +1,12 @@
 @import "./variables.scss";
 
 
-.app-main {
+#root {
     margin-top: 56px;
+
+    main {
+        margin: 0 64px;
+    }
 
     @media (min-width: 768px) {
         max-width: calc(100% - 56px);

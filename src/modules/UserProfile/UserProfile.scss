@@ -14,14 +14,7 @@
     > button {
       margin-left: 4px;
       border: none;
-      background: transparent;
       cursor: pointer;
-      &:hover {
-        opacity: 0.7;
-      }
-      > i {
-        font-size: 18px;
-      }
     }
   }
 
@@ -199,10 +192,6 @@
 
     .modal-header {
       margin-bottom: 0;
-    }
-
-    &.delete-account {
-      width: 360px;
     }
   }
 }

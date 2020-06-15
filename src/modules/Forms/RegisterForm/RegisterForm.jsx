@@ -50,7 +50,6 @@ export function RegisterForm() {
                     credentials: "Wrong credentials. Try again.",
                   }));
                 } else {
-                  console.log(response);
                   dispatch(login(response.user, response.token, false));
                   history.push("/");
                 }
