@@ -1,4 +1,4 @@
-import { postJson, getJson, deleteRequest, patchRequest } from './APIutils';
+import { postJson, postJsonToken, getJson, deleteRequest, patchRequest } from './APIutils';
 
 const API_KEY = "lora";
 
@@ -30,10 +30,22 @@ export function userDataRequest(token, id) {
     return getJson("/api/users/" + id, token);
 }
 
+export function leagueRequest(token, id) {
+    return getJson("/api/leagues/" + id, token, API_KEY);
+}
+
 export function leaguesRequest(token) {
     return getJson("/api/leagues/", token, API_KEY);
 }
 
 export function addLeagueRequest(token, newLeague) {
-    return postJson("/api/leagues/", token, newLeague, API_KEY);
+    return postJsonToken("/api/leagues/", token, newLeague, API_KEY);
+}
+
+export function editLeagueRequest(token, newLeague) {
+    return patchRequest("/api/leagues/" + newLeague.id, token, newLeague, API_KEY);
+}
+
+export function deleteLeagueRequest(token, id) {
+    return deleteRequest("/api/leagues/" + id, token, API_KEY);
 }

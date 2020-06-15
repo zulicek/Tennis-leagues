@@ -3,6 +3,7 @@ import './LeagueLine.scss';
 import { Icon } from '../Icon/Icon';
 import { NavLink } from 'react-router-dom';
 import {Button} from "../Button/Button";
+import { leagues } from '../../leagues';
 
 export function LeagueLine({ league }) {
 	return (

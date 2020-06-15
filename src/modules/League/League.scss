@@ -1,0 +1,78 @@
+@import './../../variables.scss';
+
+.leagues-intro {
+    flex-direction: column;
+	.actions {
+		display: flex;
+		.btn {
+			margin-left: 4px;
+		}
+    }
+    
+    @media (min-width: 576px) {
+        flex-direction: row;
+    }
+}
+
+.league-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-bottom: 2px solid $gray;
+    margin-bottom: 32px;
+
+	.info-col {
+		display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+
+        .info-row {
+            display: flex;
+            margin-bottom: 16px;
+            label {
+                min-width: 120px;
+                font-weight: bold;
+            }
+
+            i:last-child {
+                margin-right: 8px;
+            }
+        }
+    }
+    
+    @media (min-width: 767px) {
+        flex-direction: row;
+    }
+}
+
+.tabs {
+    display: flex;
+
+    .tab {
+        padding: 8px 16px;
+        background-color: $gray;
+        border-left: 1px solid $gray;
+        border-top: 1px solid $gray;
+        border-right: 1px solid $gray;
+        border-radius: 8px 8px 0 0;
+        cursor: pointer;
+        margin-bottom: -1px;
+        &.active {
+            background-color: $white;
+            border-bottom: 1px solid $white;
+        }
+    }
+}
+
+.tab-content {
+    display: none;
+    padding: 16px;
+    border-left: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+    border-right: 1px solid $gray;
+    border-top: 1px solid $gray;
+
+    &.active {
+        display: block;
+    }
+}

@@ -29,6 +29,17 @@ export function postJson( url, postRequest, API_KEY) {
   })
 }
 
+export function postJsonToken( url, token, newData, API_KEY ) {
+  console.log(url, token, newData, API_KEY)
+  return request({
+    url: API_BASE_URL + url,
+    method: "POST",
+    auth: 'Bearer ' + token,
+    body: JSON.stringify(newData),
+    apiKey: API_KEY
+  })
+}
+
 export function getJson( url, token, API_KEY ) {
   return request({
     url: API_BASE_URL + url,
@@ -47,11 +58,12 @@ export function deleteRequest( url, token, API_KEY ) {
   })
 }
 
-export function patchRequest( url, token, newData ) {
+export function patchRequest( url, token, newData, API_KEY ) {
   return request({
     url: API_BASE_URL + url,
     method: "PATCH",
     auth: 'Bearer ' + token,
-    body: JSON.stringify(newData)
+    body: JSON.stringify(newData),
+    apiKey: API_KEY
   })
 }

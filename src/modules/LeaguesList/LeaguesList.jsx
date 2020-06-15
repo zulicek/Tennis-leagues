@@ -6,40 +6,41 @@ import { Modal } from '../../components/Modal/Modal';
 import { useBoolean } from '../../utils/customHooks/UseBoolean';
 import { LeagueForm } from '../../modules/Forms/LeagueForm/LeagueForm';
 import { useSelector } from 'react-redux';
-import { leaguesRequest, addLeagueRequest } from "../../api/repository"
+import { leaguesRequest, addLeagueRequest } from '../../api/repository';
 
 export function LeaguesList() {
 	const [isAddLeagueOpen, toggleAddLeagueOpen] = useBoolean();
 	const token = useSelector((state) => state.session.token);
-	const [leagues, setLeagues] = useState({})
+	const [leagues, setLeagues] = useState({});
 
 	useEffect(() => {
-		leaguesRequest({
-			token: token
-		})
+		leaguesRequest(token)
 			.then((response) => {
 				if (response.error) {
-					console.log(response.error)
+					console.log(response.error);
 				} else {
-					setLeagues(response)
-					console.log(response)
+					setLeagues(response);
 				}
 			})
 			.catch((error) => {
-				console.log(error)
+				console.log(error);
 			})
-			.finally(toggleAddLeagueOpen())
 	}, []);
 
 	const addLeague = (league) => {
-		addLeagueRequest(league)
+		addLeagueRequest(token, league)
         .then((response) => {
-			console.log(response);
+			if (response.error) {
+				console.log(response.error);
+			} else {
+				setLeagues([...leagues, league])
+				toggleAddLeagueOpen()
+			}
 		})
 		.catch((error) => {
 			console.log(error)
 		})
-	}
+	};
 
 	return (
 		<>
@@ -68,7 +69,7 @@ export function LeaguesList() {
 							</button>
 						</div>
 						<div className="modal-content">
-							<LeagueForm title="Add league" onSubmit={addLeague}/>
+							<LeagueForm title="Add league" onSubmit={addLeague} />
 						</div>
 					</div>
 				</Modal>

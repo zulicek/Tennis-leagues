@@ -11,9 +11,8 @@ import { Loader } from '../../../components/Loader/Loader';
 import { validateLeague } from '../../../utils/validations/validateLeague';
 
 export const LeagueForm = ({ title, league = {}, onSubmit }) => {
-	const [newLegaue, setLeague] = useState({});
+	const [newLegaue, setLeague] = useState(league);
 	const [errors, setErrors] = useState({});
-	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useBoolean(false);
 
 	const handleChange = useCallback((field) => (newValue) => setLeague((prev) => ({ ...prev, [field]: newValue })));
@@ -24,7 +23,7 @@ export const LeagueForm = ({ title, league = {}, onSubmit }) => {
 		setErrors(errs);
 
 		if (isObjectEmpty(errs)) {
-			onSubmit(newLegaue)
+			onSubmit(newLegaue);
 		}
 	};
 
@@ -49,7 +48,7 @@ export const LeagueForm = ({ title, league = {}, onSubmit }) => {
 							name="Date"
 							icon="fa fa-calendar"
 							type="date"
-							onChange={handleChange('date')}
+							onChange={handleChange('startDate')}
 							value={league && league.startDate}
 							error={errors.startDate}
 						/>
@@ -60,17 +59,17 @@ export const LeagueForm = ({ title, league = {}, onSubmit }) => {
 							name="Type"
 							icon="fa fa-user"
 							type="radio"
-							value="Single"
+							value="single"
 							onChange={handleChange('type')}
-							checked={newLegaue.type === 'Single'}
+							checked={newLegaue.type === 'single'}
 						/>
 						<Input
 							name="Type"
 							icon="fa fa-users"
 							type="radio"
-							value="Double"
+							value="double"
 							onChange={handleChange('type')}
-							checked={newLegaue.type === 'Double'}
+							checked={newLegaue.type === 'double'}
 						/>
 
 						{errors.type && <div className="error">{errors.type}</div>}
@@ -111,37 +110,58 @@ export const LeagueForm = ({ title, league = {}, onSubmit }) => {
 							<Input
 								name="Surface"
 								type="radio"
-								value="Clay"
+								value="clay"
 								onChange={handleChange('surface')}
-								checked={newLegaue.surface === 'Clay'}
+								checked={newLegaue.surface === 'clay'}
 							/>
 
 							<Input
 								name="Surface"
 								type="radio"
-								value="Grass"
+								value="grass"
 								onChange={handleChange('surface')}
-								checked={newLegaue.surface === 'Grass'}
+								checked={newLegaue.surface === 'grass'}
 							/>
 
 							<Input
 								name="Surface"
 								type="radio"
-								value="Hard"
+								value="hard"
 								onChange={handleChange('surface')}
-								checked={newLegaue.surface === 'Hard'}
+								checked={newLegaue.surface === 'hard'}
 							/>
 
 							<Input
 								name="Surface"
 								type="radio"
-								value="Carpet"
+								value="carpet"
 								onChange={handleChange('surface')}
-								checked={newLegaue.surface === 'Carpet'}
+								checked={newLegaue.surface === 'carpet'}
 							/>
 						</div>
 
 						{errors.surface && <div className="error">{errors.surface}</div>}
+					</div>
+
+					<div className="form-group">
+						<Label icon="fa fa-venus-mars" name="Gender" />
+
+						<Input
+							name="Gender"
+							type="radio"
+							value="male"
+							onChange={handleChange('gender')}
+							checked={newLegaue.gender === 'male'}
+						/>
+						<Input
+							name="Gender"
+							type="radio"
+							value="female"
+							onChange={handleChange('gender')}
+							checked={newLegaue.gender === 'female'}
+						/>
+
+						{errors.gender && <div className="error">{errors.gender}</div>}
 					</div>
 
 					{/* <div className="error-wrapper">
